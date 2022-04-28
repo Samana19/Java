@@ -12,9 +12,10 @@ public class Testwater {
         rightmax[size-1] = height[size-1];
         for(int i=size-2;i>=0;i--){
             rightmax[i] = Math.max(rightmax[i+1],height[i]);
+        }  
+        for(int i=0;i<size;i++){
+            water += Math.min(leftmax[i],rightmax[i]) - height[i];
         }
-
-        pika guu = new pika();
 
         return water;
     }
