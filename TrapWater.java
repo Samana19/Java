@@ -1,4 +1,4 @@
-public class Testwater {
+public class TrapWater {
     public int trapWater(int height[]) {
         int water = 0;
         int size = height.length;
@@ -18,5 +18,12 @@ public class Testwater {
         }
 
         return water;
+    
+    }
+
+    public static void main(String[] args) {
+        TrapWater testwater = new TrapWater();
+        int[] height = {3,2,0,2,4};
+        System.out.println(testwater.trapWater(height));
     }
 }
