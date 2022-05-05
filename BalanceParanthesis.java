@@ -17,5 +17,8 @@ public class BalanceParanthesis {
                     return false;
                 }
             }
+            if(stack.isEmpty()){
+                return false;
+            }
 }
         return true; }}
