@@ -13,6 +13,9 @@ public class BalanceParanthesis {
             else{
                 int index = closingbracket.indexOf(bracket);
                 char openingbraces=openingbracket.charAt(index);
+                if (stack.isEmpty()) {
+                    return false;
+                }
                 if(stack.pop()!=openingbraces){
                     return false;
                 }
