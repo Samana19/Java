@@ -34,11 +34,18 @@ public class LinkedList {
 
     public int getDataAtAnyPos(int pos){
         Node current= head;
-        for(int i=1; i<pos; i++){
+        for(int i=1; i<=pos; i++){
             current= current.next;
         }
         return current.data;
 
+    }
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.addNode(1);
+        list.addNode(2);
+        System.out.println(list.getDataAtAnyPos(2));
+        System.out.println(list.getSize());
     }
     
 }
