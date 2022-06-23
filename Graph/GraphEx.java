@@ -38,13 +38,27 @@ public class GraphEx {
 
         for(int i=0; i<vertices; i++){
             int u=findminimumvertex(visited, distance);
+            visited[u]=true;  
+            
+            for (int j = 0; j < vertices; j++) {
+                if (matrix[u][j] != 0) {
+                    int v=j;
+                    int newdistance= distance[u]+ matrix[u][j];
+                    if(newdistance<distance[v]){
+                        distance[v]=newdistance;
+                    }
+                    
+                }
+            }
         }
+
+        
     }
 
     public int findminimumvertex(boolean visited[], int distance[]) {
         int minvertex=-1;
         for(int i=0; i<vertices; i++){
-            if(minvertex==-1 && !visited[i]){
+            if((minvertex==-1 || distance[i]<distance[minvertex]) && !visited[i]){
                 minvertex=i;
 
             }
