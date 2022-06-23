@@ -36,30 +36,47 @@ public class GraphEx {
         }
         distance[source] = 0;
 
-        for(int i=0; i<vertices; i++){
-            int u=findminimumvertex(visited, distance);
-            visited[u]=true;  
-            
+        for (int i = 0; i < vertices; i++) {
+            int u = findminimumvertex(visited, distance);
+            visited[u] = true;
+
             for (int j = 0; j < vertices; j++) {
                 if (matrix[u][j] != 0) {
-                    int v=j;
-                    int newdistance= distance[u]+ matrix[u][j];
-                    if(newdistance<distance[v]){
-                        distance[v]=newdistance;
+                    int v = j;
+                    int newdistance = distance[u] + matrix[u][j];
+                    if (newdistance < distance[v]) {
+                        distance[v] = newdistance;
+                        prevpath[v] = u;
                     }
-                    
+
                 }
             }
+            
+
+        }
+        System.out.println("distance from " + source + " to " +destination+ " is " +distance[destination]);
+        int crawl = destination;
+        int path[]= new int[vertices];
+        int index=0;
+        while(crawl !=-1)
+        {
+            path[index]=crawl;
+            crawl= prevpath[crawl];
+        }
+        for(int i=index-1; i>=0; i--){
+            System.out.println(path[i]);
+
         }
 
-        
     }
 
+    
+
     public int findminimumvertex(boolean visited[], int distance[]) {
-        int minvertex=-1;
-        for(int i=0; i<vertices; i++){
-            if((minvertex==-1 || distance[i]<distance[minvertex]) && !visited[i]){
-                minvertex=i;
+        int minvertex = -1;
+        for (int i = 0; i < vertices; i++) {
+            if ((minvertex == -1 || distance[i] < distance[minvertex]) && !visited[i]) {
+                minvertex = i;
 
             }
         }
